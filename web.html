@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Registration Form</title>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: #f2f4f7;
+            padding: 40px;
+        }
+        .form-container{
+            background: #fff;
+            width: 450px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #bbb;
+        }
+        h2{ text-align: center; }
+        input, select{
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button{
+            width: 100%;
+            padding: 10px;
+            background: #0b79e6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Online Application Form</h2>
+
+    <form id="regForm" action="submit.php" method="POST">
+
+        <label>Full Name</label>
+        <input type="text" name="fullname" id="fullname" required>
+
+        <label>Email</label>
+        <input type="email" name="email" id="email" required>
+
+        <label>Phone Number</label>
+        <input type="text" name="phone" id="phone" required>
+
+        <label>Gender</label>
+        <select name="gender" required>
+            <option value="">-- Select --</option>
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+
+        <label>City</label>
+        <input type="text" name="city" required>
+
+        <button type="submit">Submit Application</button>
+    </form>
+</div>
+
+<script>
+$(function(){
+    $("#regForm").on("submit", function(){
+        let name = $("#fullname").val().trim();
+        let phone = $("#phone").val().trim();
+
+        if(name === ""){
+            alert("Name is required");
+            return false;
+        }
+
+        if(phone.length < 10){
+            alert("Enter valid phone number");
+            return false;
+        }
+        return true; 
+    });
+});
+</script>
+
+</body>
+</html>
